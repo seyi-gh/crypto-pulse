@@ -1,5 +1,12 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
+//! (1) Generate the page at landing in >Vercel< (2) [modular generation]
 
-// https://astro.build/config
-export default defineConfig({});
+import react from '@astrojs/react';
+import tailwind from '@astrojs/tailwind';
+import { defineConfig } from 'astro/config';
+import vercel from '@astrojs/vercel/serverless'; //! (1)
+
+export default defineConfig({
+  output: 'server',
+  integrations: [react(), tailwind()],
+  adapter: vercel()
+});
